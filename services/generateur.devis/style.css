@@ -1,0 +1,388 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f0f13;
+  color: #e8e8f0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: #16161f;
+  border-right: 1px solid #2a2a40;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00ff9d;
+  margin-bottom: 8px;
+}
+
+.btn-new {
+  background: #00ff9d;
+  color: #0f0f13;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.btn-new:hover { opacity: 0.85; }
+
+.historique-title {
+  font-size: 0.75rem;
+  color: #6b6b88;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+#historique-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+}
+
+.historique-item {
+  padding: 10px 12px;
+  background: #1e1e2e;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #aaa;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.historique-item:hover {
+  border-color: #00ff9d;
+  color: #fff;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid #2a2a40;
+  background: #16161f;
+}
+
+.top-bar h2 {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: #00ff9d;
+  color: #0f0f13;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-secondary {
+  background: none;
+  color: #e8e8f0;
+  border: 1px solid #2a2a40;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: #00ff9d;
+  color: #00ff9d;
+}
+
+.btn-primary.full,
+.btn-secondary.full {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+}
+
+/* WORKSPACE */
+.workspace {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.panel {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.panel.gauche {
+  border-right: 1px solid #2a2a40;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section label {
+  font-size: 0.8rem;
+  color: #6b6b88;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+textarea {
+  background: #1e1e2e;
+  border: 1px solid #2a2a40;
+  border-radius: 8px;
+  padding: 14px;
+  color: #e8e8f0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.88rem;
+  resize: vertical;
+  min-height: 120px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+textarea:focus { border-color: #00ff9d; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+input {
+  background: #1e1e2e;
+  border: 1px solid #2a2a40;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #e8e8f0;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+input:focus { border-color: #00ff9d; }
+
+/* PREVIEW */
+.facture-preview {
+  background: #fff;
+  color: #111;
+  border-radius: 12px;
+  min-height: 600px;
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #aaa;
+  gap: 12px;
+}
+
+.empty-icon { font-size: 3rem; }
+
+/* LOADING */
+.loading {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 100;
+}
+
+.loading.hidden { display: none; }
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #2a2a40;
+  border-top-color: #00ff9d;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* DEVIS CONTENU */
+.facture-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.facture-numero {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.facture-date { color: #666; font-size: 0.9rem; }
+
+.facture-parties {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.facture-partie h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 6px;
+}
+
+.facture-partie p { font-size: 0.9rem; line-height: 1.6; }
+
+.facture-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.facture-table th {
+  background: #f5f5f5;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.facture-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.facture-totaux {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.facture-totaux .ligne {
+  display: flex;
+  gap: 40px;
+  font-size: 0.9rem;
+}
+
+.facture-totaux .total-final {
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-top: 2px solid #111;
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.facture-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.signature-box {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.signature-bloc {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 100px;
+}
+
+.signature-bloc h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.signature-bloc p {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+@media print {
+  .sidebar, .panel.gauche, .top-bar, .loading {
+    display: none !important;
+  }
+  .app, .workspace, .panel.droite {
+    display: block !important;
+    width: 100% !important;
+  }
+  .facture-preview {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+}
+

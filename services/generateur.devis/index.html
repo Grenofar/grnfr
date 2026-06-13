@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur De Devis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://images.emojiterra.com/google/noto-emoji/unicode-17.0/color/svg/26a1.svg">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">⚡ Devis AI developpé par Rayan</div>
+      <button class="btn-new" onclick="nouveauDevis()">+ Nouveau devis</button>
+      <button class="btn-secondary" onclick="modifierEntreprise()" style="width:100%;margin-top:8px">Mon Entreprise</button>
+      <div class="historique-title">Historique</div>
+      <div id="historique-list"></div>
+    </aside>
+
+    <main class="main">
+      <div class="top-bar">
+        <h2 id="devis-titre">Nouveau devis</h2>
+        <div class="top-actions">
+          <button class="btn-secondary" onclick="telechargerDevis()">⬇️ Télécharger</button>
+          <button class="btn-primary" onclick="genererDevis()">✨ Générer avec IA</button>
+        </div>
+      </div>
+
+      <div class="workspace">
+        <div class="panel gauche">
+          <div class="section">
+            <label>Décris ton devis en langage naturel</label>
+            <textarea id="prompt-input" placeholder="Ex: Devis pour Marie Martin, création site web vitrine, 5 pages, livraison sous 3 semaines, 1200€ HT..."></textarea>
+            <button class="btn-primary full" onclick="genererDevis()">✨ Générer avec IA</button>
+          </div>
+
+          <div class="section">
+            <label>Ou remplis manuellement</label>
+            <div class="form-grid">
+              <input type="text" id="client-nom" placeholder="Nom client">
+              <input type="text" id="client-email" placeholder="Email client">
+              <input type="text" id="client-adresse" placeholder="Adresse client">
+              <input type="text" id="prestation" placeholder="Description prestation">
+              <input type="number" id="quantite" placeholder="Quantité" value="1">
+              <input type="number" id="prix-unitaire" placeholder="Prix unitaire (€)">
+              <input type="number" id="tva" placeholder="TVA (%)" value="20">
+              <input type="text" id="validite" placeholder="Validité (ex: 30 jours)">
+            </div>
+            <button class="btn-secondary full" onclick="genererManuel()">📄 Générer manuellement</button>
+          </div>
+        </div>
+
+        <div class="panel droite">
+          <div id="facture-preview" class="facture-preview">
+            <div class="empty-state">
+              <div class="empty-icon">📄</div>
+              <p>Ton devis apparaîtra ici</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <p>L'IA génère ton devis...</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
